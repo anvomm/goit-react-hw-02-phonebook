@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class ContactList extends Component {
   render() {
@@ -14,12 +15,12 @@ export class ContactList extends Component {
   }
 }
 
-/* export const ContactList = ({ contacts }) => {
-  return (
-    <ul>
-      {contacts.map(({ name, id }) => (
-        <li key={id}>{name}</li>
-      ))}
-    </ul>
-  );
-}; */
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
