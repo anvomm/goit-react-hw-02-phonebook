@@ -9,9 +9,15 @@ export class ContactForm extends Component {
     this.setState({ name: e.target.value });
   };
 
+  addContact = e => {
+    e.preventDefault();
+    this.props.addContact({ ...this.state });
+    this.setState({ name: '' });
+  };
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.addContact}>
         <label>
           Name
           <input
