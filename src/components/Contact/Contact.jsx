@@ -6,6 +6,14 @@ export class Contact extends Component {
     return this.props.contacts.map(({ name, id, number }) => (
       <li key={id}>
         {name}: {number}
+        <button
+          type="button"
+          onClick={() => {
+            this.props.deleteContact(id);
+          }}
+        >
+          Delete
+        </button>
       </li>
     ));
   }
@@ -19,4 +27,5 @@ Contact.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ).isRequired,
+  deleteContact: PropTypes.func,
 };
