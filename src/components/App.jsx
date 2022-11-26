@@ -17,9 +17,9 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact = obj => {
+  addContact = contactObject => {
     const newContact = {
-      ...obj,
+      ...contactObject,
       id: nanoid(),
     };
 
@@ -46,13 +46,9 @@ export class App extends Component {
   };
 
   filterContacts = () => {
-    const { contacts } = this.state;
-    const normalizedString = this.state.filter.toLowerCase();
-    /* return this.setState(prevState => ({
-      contacts: prevState.contacts.filter(({ name }) =>
-        name.toLowerCase().includes(normalizedString)
-      ),
-    })); */
+    const { contacts, filter } = this.state;
+    const normalizedString = filter.toLowerCase();
+
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(normalizedString)
     );
@@ -71,7 +67,7 @@ export class App extends Component {
           <h2>Contacts</h2>
           <Filter
             filter={filter}
-            filterChange={this.registerFilterValue}
+            findContact={this.registerFilterValue}
           ></Filter>
           <ContactList
             contacts={this.filterContacts()}

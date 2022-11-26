@@ -13,7 +13,7 @@ export class Filter extends Component {
           value={this.props.filter}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          onChange={this.props.filterChange}
+          onChange={this.props.findContact}
           required
         />
       </FilterLabel>
@@ -22,5 +22,6 @@ export class Filter extends Component {
 }
 
 Filter.propTypes = {
-  filterChange: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+  findContact: PropTypes.func.isRequired,
 };
