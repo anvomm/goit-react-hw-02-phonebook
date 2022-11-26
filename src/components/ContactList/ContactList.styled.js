@@ -18,3 +18,8 @@ export const Text = styled.p`
   font-size: 18px;
   color: #4b494d;
 `;
+
+export const Span = styled.span`
+  color: #5c3c8c;
+  font-weight: 600;
+`;

@@ -70,6 +70,7 @@ export class App extends Component {
             findContact={this.registerFilterValue}
           ></Filter>
           <ContactList
+            filter={filter}
             contacts={this.filterContacts()}
             deleteContact={this.deleteContact}
           />
