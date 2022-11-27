@@ -15,6 +15,7 @@ export const List = styled.ul`
 `;
 
 export const Text = styled.p`
+  margin-top: 30px;
   font-size: 18px;
   color: #4b494d;
 `;

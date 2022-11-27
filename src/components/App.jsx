@@ -5,6 +5,7 @@ import { Section } from './Section/Section';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { Text, Span } from './ContactList/ContactList.styled';
 
 export class App extends Component {
   state = {
@@ -27,8 +28,9 @@ export class App extends Component {
       this.state.contacts.find(
         ({ name }) => name.toLowerCase() === newContact.name.toLowerCase()
       )
-    )
+    ) {
       return alert(`${newContact.name} is already in contacts.`);
+    }
 
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
@@ -55,7 +57,7 @@ export class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     return (
       <div>
         <Section>
@@ -69,11 +71,20 @@ export class App extends Component {
             filter={filter}
             findContact={this.registerFilterValue}
           ></Filter>
-          <ContactList
-            filter={filter}
-            contacts={this.filterContacts()}
-            deleteContact={this.deleteContact}
-          />
+
+          {contacts.length === 0 && filter === '' ? (
+            <Text>Unfortunately your contacts list is empty</Text>
+          ) : this.filterContacts().length === 0 && filter !== '' ? (
+            <Text>
+              Your list does not contain the contact named
+              <Span> {filter}</Span>
+            </Text>
+          ) : (
+            <ContactList
+              contacts={this.filterContacts()}
+              deleteContact={this.deleteContact}
+            />
+          )}
         </Section>
 
         <GlobalStyles />
