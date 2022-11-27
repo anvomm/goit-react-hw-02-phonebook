@@ -24,11 +24,11 @@ export class App extends Component {
       id: nanoid(),
     };
 
-    if (
-      this.state.contacts.find(
-        ({ name }) => name.toLowerCase() === newContact.name.toLowerCase()
-      )
-    ) {
+    const isExist = this.state.contacts.find(
+      ({ name }) => name.toLowerCase() === newContact.name.toLowerCase()
+    );
+
+    if (isExist) {
       return alert(`${newContact.name} is already in contacts.`);
     }
 
