@@ -1,22 +1,25 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ContactButton, ListItem } from './Contact.styled';
+import { ContactButton } from './Contact.styled';
 
 export class Contact extends Component {
   render() {
-    return this.props.contacts.map(({ name, id, number }) => (
-      <ListItem key={id}>
-        {name}: {number}
+    const { name, number, id, deleteContact } = this.props;
+    return (
+      <>
+        <p>
+          {name}: {number}
+        </p>
         <ContactButton
           type="button"
           onClick={() => {
-            this.props.deleteContact(id);
+            deleteContact(id);
           }}
         >
           Delete
         </ContactButton>
-      </ListItem>
-    ));
+      </>
+    );
   }
 }
 

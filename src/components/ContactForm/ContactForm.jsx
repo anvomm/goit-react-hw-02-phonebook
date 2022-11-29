@@ -50,7 +50,7 @@ export class ContactForm extends Component {
           </Label>
         </Wrap>
 
-        <Button>Add contact</Button>
+        <Button onClick={e => e.target.blur()}>Add contact</Button>
       </Form>
     );
   }

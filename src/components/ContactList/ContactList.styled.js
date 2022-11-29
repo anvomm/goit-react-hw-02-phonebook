@@ -14,6 +14,14 @@ export const List = styled.ul`
   }
 `;
 
+export const ListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.6;
+  color: #4b494d;
+`;
+
 export const Text = styled.p`
   margin-top: 30px;
   font-size: 18px;
